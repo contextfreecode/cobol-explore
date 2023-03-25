@@ -1,2 +1,2 @@
+       copy sdl-constants.
        copy sdl-event.
-       copy sdl-init.
