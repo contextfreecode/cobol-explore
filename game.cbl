@@ -23,7 +23,9 @@
            perform until done
                perform poll-events
                perform end-step
+               call 'SDL_RenderClear' using by value renderer
                call 'SDL_RenderCopy' using
+      *        call 'renderTexture' using
                    by value renderer player-texture
                    by content src-rect dst-rect
            end-perform
@@ -43,9 +45,10 @@
                by value sdl-renderer-accelerated
                returning renderer
            call 'loadBmp' using
-               by content z'assets/character.bmp'
+               by content z'assets/player.bmp'
                by value renderer
-               by reference player-texture
+               returning player-texture
+      *        by reference player-texture
            .
        poll-event.
            call 'SDL_PollEvent' using by reference sdl-event
@@ -61,9 +64,8 @@
            end-perform
            .
        end-step.
-           call 'SDL_RenderClear' using by value renderer
            call 'SDL_RenderPresent' using by value renderer
-           call 'SDL_Delay' using by value 20
+           call 'SDL_Delay' using by value 200
            .
        dispose.
            call 'SDL_DestroyRenderer' using by value renderer
