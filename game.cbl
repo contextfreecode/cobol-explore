@@ -40,9 +40,7 @@
                returning renderer
            end-call
            call 'load-texture' using
-               by content z'assets/player.bmp'
-               by value renderer
-               by reference player-texture
+               z'assets/player.bmp' renderer player-texture
            end-call
            move 0 to src-rect-x src-rect-y dst-rect-x dst-rect-y
            move 60 to src-rect-w dst-rect-w
@@ -85,17 +83,17 @@
        data division.
        working-storage section.
            01 surface usage pointer.
+           01 rw usage pointer.
        linkage section.
       *    -- path must be null-terminated --
            01 path pic x(255).
            01 renderer usage pointer.
            01 texture usage pointer.
-       procedure division using
-           by reference path
-           by value renderer
-           by reference texture.
+       procedure division using path renderer texture.
        begin.
-           call 'loadBmpAsSurface' using path
+      *    -- Can't just SDL_LoadBMP because it's a C macro ---
+           call 'SDL_RWFromFile' using path z'rb' returning rw end-call
+           call 'SDL_LoadBMP_RW' using by value rw 1
                returning surface
            end-call
            call 'SDL_CreateTextureFromSurface' using
