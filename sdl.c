@@ -9,20 +9,16 @@ void dontCallMe(void) {
     SDL_FreeSurface(surface);
 }
 
-SDL_Texture* loadBmp(const char* path, SDL_Renderer* renderer) {
-    SDL_Surface* surface = SDL_LoadBMP(path);
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-    printf("path %s\n", path);
-    printf("surface %p texture %p\n", surface, texture);
-    SDL_FreeSurface(surface);
-    return texture;
+SDL_Surface* loadBmpAsSurface(const char* path) {
+    return SDL_LoadBMP(path);
 }
 
 void renderTexture(
     SDL_Renderer* renderer, SDL_Texture* texture, SDL_Rect* src, SDL_Rect* dst
 ) {
-    printf("renderer %p texture %p\n", renderer, texture);
-    printf("src %d %d %d %d\n", src->x, src->y, src->w, src->h);
-    printf("dst %d %d %d %d\n", dst->x, dst->y, dst->w, dst->h);
     SDL_RenderCopy(renderer, texture, src, dst);
+}
+
+void showPointer(void* pointer) {
+    printf("%p\n", pointer);
 }

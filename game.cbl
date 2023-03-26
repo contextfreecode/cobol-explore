@@ -17,42 +17,41 @@
            copy sdl-rect replacing leading ==sdl== by ==dst==.
        procedure division.
            perform init
-           move 0 to src-rect-x src-rect-y dst-rect-x dst-rect-y
-           move 60 to src-rect-w dst-rect-w
-           move 80 to src-rect-h dst-rect-h
            perform until done
                perform poll-events
+               perform render
                perform end-step
-               call 'SDL_RenderClear' using by value renderer
-               call 'SDL_RenderCopy' using
-      *        call 'renderTexture' using
-                   by value renderer player-texture
-                   by content src-rect dst-rect
            end-perform
            perform dispose
            goback
            .
        init.
-           call 'SDL_Init' using by value sdl-init-video
+           call 'SDL_Init' using by value sdl-init-video end-call
            call 'SDL_CreateWindow' using
               by content win-name
               by value win-pos 0 win-size 980 win-flags
               returning win
+           end-call
            call 'SDL_CreateRenderer' using
                by value win
-      *        TODO How to pass a null pointer?
+      *        -- TODO How to pass a null pointer? --
                by reference null
                by value sdl-renderer-accelerated
                returning renderer
-           call 'loadBmp' using
+           end-call
+           call 'load-texture' using
                by content z'assets/player.bmp'
                by value renderer
-               returning player-texture
-      *        by reference player-texture
+               by reference player-texture
+           end-call
+           move 0 to src-rect-x src-rect-y dst-rect-x dst-rect-y
+           move 60 to src-rect-w dst-rect-w
+           move 80 to src-rect-h dst-rect-h
            .
        poll-event.
            call 'SDL_PollEvent' using by reference sdl-event
                returning event-found
+           end-call
            .
        poll-events.
            perform poll-event
@@ -63,14 +62,21 @@
                perform poll-event
            end-perform
            .
+       render.
+           call 'SDL_RenderClear' using by value renderer end-call
+           call 'SDL_RenderCopy' using
+               by value renderer player-texture
+               by content src-rect dst-rect
+           end-call
+           .
        end-step.
-           call 'SDL_RenderPresent' using by value renderer
-           call 'SDL_Delay' using by value 200
+           call 'SDL_RenderPresent' using by value renderer end-call
+           call 'SDL_Delay' using by value 20 end-call
            .
        dispose.
-           call 'SDL_DestroyRenderer' using by value renderer
-           call 'SDL_DestroyWindow' using by value win
-           call 'SDL_Quit'
+           call 'SDL_DestroyRenderer' using by value renderer end-call
+           call 'SDL_DestroyWindow' using by value win end-call
+           call 'SDL_Quit' end-call
            .
        end program game.
 
@@ -78,19 +84,24 @@
        program-id. load-texture.
        data division.
        working-storage section.
-           01 path-nulled pic x(255).
            01 surface usage pointer.
        linkage section.
-           01 path pic x(254).
+      *    -- path must be null-terminated --
+           01 path pic x(255).
            01 renderer usage pointer.
            01 texture usage pointer.
-       procedure division.
-      *    move function concatenate(path, x'00') to path-nulled
-      *    call 'loadBmp' using by content path-nulled
-      *        returning surface
-      *    call 'SDL_CreateTextureFromSurface' using
-      *        by value renderer surface
-      *        returning texture
-      *    call 'SDL_DestroySurface' using by value surface
-      *    .
+       procedure division using
+           by reference path
+           by value renderer
+           by reference texture.
+       begin.
+           call 'loadBmpAsSurface' using path
+               returning surface
+           end-call
+           call 'SDL_CreateTextureFromSurface' using
+               by value renderer surface
+               returning texture
+           end-call
+           call 'SDL_FreeSurface' using by value surface end-call
+           .
        end program load-texture.
