@@ -13,8 +13,8 @@
            01 win-pos binary-long value 100.
            01 win-name pic x(32) value z'My Game'.
            01 win-size binary-long value 700.
-           copy sdl-rect replacing leading ==sdl-== by ==src-==.
-           copy sdl-rect replacing leading ==sdl-== by ==dst-==.
+           copy sdl-rect replacing leading ==sdl== by ==src==.
+           copy sdl-rect replacing leading ==sdl== by ==dst==.
        procedure division.
            perform init
            move 0 to src-rect-x src-rect-y dst-rect-x dst-rect-y

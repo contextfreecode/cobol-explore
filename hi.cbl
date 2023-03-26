@@ -14,6 +14,7 @@
       *
        identification division.
        program-id. greeet.
+      *program-id. greeet is recursive.
        data division.
        linkage section.
        01 num pic 9(3).
