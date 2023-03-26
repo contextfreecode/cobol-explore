@@ -9,13 +9,10 @@
            01 player-texture usage pointer.
            01 renderer usage pointer.
            01 win usage pointer.
-           01 win-flags binary-long value 0.
-           01 win-pos binary-long value 100.
-           01 win-name pic x(32) value z'My Game'.
-           01 win-size binary-long value 700.
            copy sdl-rect replacing leading ==sdl== by ==src==.
            copy sdl-rect replacing leading ==sdl== by ==dst==.
        procedure division.
+       main.
            perform init
            perform until done
                perform poll-events
@@ -28,8 +25,8 @@
        init.
            call 'SDL_Init' using by value sdl-init-video end-call
            call 'SDL_CreateWindow' using
-              by content win-name
-              by value win-pos 0 win-size 980 win-flags
+              by content z'My Game'
+              by value 100 0 700 980 0
               returning win
            end-call
            call 'SDL_CreateRenderer' using
@@ -90,7 +87,7 @@
            01 renderer usage pointer.
            01 texture usage pointer.
        procedure division using path renderer texture.
-       begin.
+       main.
       *    -- Can't just SDL_LoadBMP because it's a C macro ---
            call 'SDL_RWFromFile' using path z'rb' returning rw end-call
            call 'SDL_LoadBMP_RW' using by value rw 1
