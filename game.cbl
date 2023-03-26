@@ -2,16 +2,16 @@
        program-id. game.
        data division.
        working-storage section.
-       copy sdl.
-       01 done-flag pic x value space.
-           88 done value 'Y'.
-       01 event-found binary-long value 0.
-       01 renderer usage pointer.
-       01 win usage pointer.
-       01 win-flags binary-long value 0.
-       01 win-pos binary-long value 100.
-       01 win-name pic x(32) value z'My Game'.
-       01 win-size binary-long value 400.
+           copy sdl.
+           01 done-flag pic x value space.
+               88 done value 'Y'.
+           01 event-found binary-long value 0.
+           01 renderer usage pointer.
+           01 win usage pointer.
+           01 win-flags binary-long value 0.
+           01 win-pos binary-long value 100.
+           01 win-name pic x(32) value z'My Game'.
+           01 win-size binary-long value 400.
        procedure division.
            perform init
            perform until done
