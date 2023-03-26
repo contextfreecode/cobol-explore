@@ -23,9 +23,9 @@
            goback
            .
        init.
-           call 'SDL_Init' using by value sdl-init-video end-call
+           call 'SDL_Init' using by value sdl-init-video
            call 'SDL_CreateWindow' using
-              by content z'My Game'
+              by content z'Fall Fast'
               by value 100 0 700 980 0
               returning win
            end-call
@@ -52,26 +52,37 @@
            perform poll-event
            perform until event-found = 0
                evaluate true
+                   when sdl-event-type-keydown perform process-key
                    when sdl-event-type-quit set done to true
                end-evaluate
                perform poll-event
            end-perform
            .
+       process-key.
+      *    display 'key '
+      *        sdl-event-key-scancode ' ' sdl-event-key-keycode
+           evaluate true
+               when sdl-scancode-down add 5 to dst-rect-y
+               when sdl-scancode-left subtract 5 from dst-rect-x
+               when sdl-scancode-right add 5 to dst-rect-x
+               when sdl-scancode-up subtract 5 from dst-rect-y
+           end-evaluate
+           .
        render.
-           call 'SDL_RenderClear' using by value renderer end-call
+           call 'SDL_RenderClear' using by value renderer
            call 'SDL_RenderCopy' using
                by value renderer player-texture
                by content src-rect dst-rect
            end-call
            .
        end-step.
-           call 'SDL_RenderPresent' using by value renderer end-call
-           call 'SDL_Delay' using by value 20 end-call
+           call 'SDL_RenderPresent' using by value renderer
+           call 'SDL_Delay' using by value 20
            .
        dispose.
-           call 'SDL_DestroyRenderer' using by value renderer end-call
-           call 'SDL_DestroyWindow' using by value win end-call
-           call 'SDL_Quit' end-call
+           call 'SDL_DestroyRenderer' using by value renderer
+           call 'SDL_DestroyWindow' using by value win
+           call 'SDL_Quit'
            .
        end program game.
 
@@ -89,7 +100,7 @@
        procedure division using path renderer texture.
        main.
       *    -- Can't just SDL_LoadBMP because it's a C macro ---
-           call 'SDL_RWFromFile' using path z'rb' returning rw end-call
+           call 'SDL_RWFromFile' using path z'rb' returning rw
            call 'SDL_LoadBMP_RW' using by value rw 1
                returning surface
            end-call
@@ -97,6 +108,6 @@
                by value renderer surface
                returning texture
            end-call
-           call 'SDL_FreeSurface' using by value surface end-call
+           call 'SDL_FreeSurface' using by value surface
            .
        end program load-texture.
