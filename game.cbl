@@ -13,11 +13,19 @@
            01 win-pos binary-long value 100.
            01 win-name pic x(32) value z'My Game'.
            01 win-size binary-long value 700.
+           copy sdl-rect replacing leading ==sdl-== by ==src-==.
+           copy sdl-rect replacing leading ==sdl-== by ==dst-==.
        procedure division.
            perform init
+           move 0 to src-rect-x src-rect-y dst-rect-x dst-rect-y
+           move 60 to src-rect-w dst-rect-w
+           move 80 to src-rect-h dst-rect-h
            perform until done
                perform poll-events
                perform end-step
+               call 'SDL_RenderCopy' using
+                   by value renderer player-texture
+                   by content src-rect dst-rect
            end-perform
            perform dispose
            goback
