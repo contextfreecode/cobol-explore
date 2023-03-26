@@ -52,11 +52,11 @@
                returning renderer
            end-call
            call 'load-texture' using
-               z'assets/player.bmp' renderer player-texture
+               z'assets/player.png' renderer player-texture
            end-call
            move 0 to src-rect-x src-rect-y dst-rect-x dst-rect-y
-           move 60 to src-rect-w dst-rect-w
-           move 80 to src-rect-h dst-rect-h
+           move 96 to src-rect-w dst-rect-w
+           move 128 to src-rect-h dst-rect-h
            .
 
        poll-event.
@@ -78,7 +78,7 @@
            .
 
        process-control.
-           if control-down add 5 to dst-rect-y end-if
+           if control-down add 10 to dst-rect-y end-if
            if control-left subtract 5 from dst-rect-x end-if
            if control-right add 5 to dst-rect-x end-if
            if control-up subtract 5 from dst-rect-y end-if
@@ -114,7 +114,7 @@
 
        end-step.
            call 'SDL_RenderPresent' using by value renderer
-           call 'SDL_Delay' using by value 20
+           call 'SDL_Delay' using by value 10
            .
 
        dispose.
@@ -140,7 +140,7 @@
        main.
       *    -- Can't just SDL_LoadBMP because it's a C macro ---
            call 'SDL_RWFromFile' using path z'rb' returning rw
-           call 'SDL_LoadBMP_RW' using by value rw 1
+           call 'IMG_Load_RW' using by value rw 1
                returning surface
            end-call
            call 'SDL_CreateTextureFromSurface' using

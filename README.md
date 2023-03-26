@@ -1,8 +1,4 @@
 ```
-$ cobc -x hi.cbl && ./hi 
-Hello World!
-```
-
-```
-$ cobc -x game.cbl sdl.c -Wall -Wextra -lSDL2 && ./game
+cobc -x hi.cbl && ./hi 
+cobc -x game.cbl sdl.c -Wall -lSDL2 -lSDL2_image && ./game
 ```
