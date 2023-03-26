@@ -1,11 +1,14 @@
        identification division.
        program-id. game.
+
        data division.
        working-storage section.
-           copy sdl.
-           copy game-control-data.
-           copy game-resource-data.
+       copy sdl.
+       copy game-control-data.
+       copy game-resource-data.
+
        procedure division.
+       main.
            perform init
            perform until done
                perform poll-events
@@ -27,8 +30,10 @@
        copy game-resource.
        end program game.
 
+
        identification division.
        program-id. load-texture.
+
        data division.
        working-storage section.
            01 surface usage pointer.
@@ -38,6 +43,7 @@
            01 path pic x(255).
            01 renderer usage pointer.
            01 texture usage pointer.
+
        procedure division using path renderer texture.
       *    -- Can't just SDL_LoadBMP because it's a C macro ---
            call 'SDL_RWFromFile' using path z'rb' returning rw
