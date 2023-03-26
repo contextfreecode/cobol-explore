@@ -16,12 +16,16 @@
            perform dispose
            goback
            .
-           copy game-control.
-           copy game-event.
-           copy game-render.
-           copy game-resource.
+       dispose.
+           call 'SDL_DestroyRenderer' using by value renderer
+           call 'SDL_DestroyWindow' using by value win
+           call 'SDL_Quit'
+           .
+       copy game-control.
+       copy game-event.
+       copy game-render.
+       copy game-resource.
        end program game.
-
 
        identification division.
        program-id. load-texture.

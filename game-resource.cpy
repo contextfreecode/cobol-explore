@@ -19,9 +19,3 @@
            move 96 to src-rect-w dst-rect-w
            move 128 to src-rect-h dst-rect-h
            .
-
-       dispose.
-           call 'SDL_DestroyRenderer' using by value renderer
-           call 'SDL_DestroyWindow' using by value win
-           call 'SDL_Quit'
-           .
