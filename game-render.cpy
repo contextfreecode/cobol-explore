@@ -29,7 +29,7 @@
            ) to ground-gen
            if ground-gen-solid then
                compute ground-dst-rect-x =
-                   ground-render-col-index * tile-size
+                   (ground-render-col-index - 1) * tile-size
                compute ground-dst-rect-y = (
                        ground-render-row-index - ground-render-row-start
                    ) * tile-size

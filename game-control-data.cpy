@@ -13,7 +13,7 @@
 
            01 event-found binary-long value 0.
 
-           78 ground-col-count value 10.
+           78 ground-col-count value 9.
            78 ground-row-count value 30.
            78 ground-row-show-count value 12.
            01 ground-gen pic x value space.

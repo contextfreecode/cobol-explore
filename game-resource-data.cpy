@@ -5,7 +5,7 @@
            78 tile-size value 70.
            01 win usage pointer.
            78 win-h value 980.
-           78 win-w value 700.
+           78 win-w value tile-size * ground-col-count.
            copy sdl-rect replacing leading ==sdl== by ==ground-src==.
            copy sdl-rect replacing leading ==sdl== by ==ground-dst==.
            copy sdl-rect replacing leading ==sdl== by ==player-src==.
