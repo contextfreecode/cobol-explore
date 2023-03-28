@@ -32,3 +32,9 @@
            01 ground-render-offset-y binary-long value 0.
 
            01 random-value float-long.
+
+           01 collision-offset.
+               05 collision-offset-x binary-long.
+               05 collision-offset-y binary-long.
+           01 collision-flag pic x value ' '.
+               88 collision value 'Y'.

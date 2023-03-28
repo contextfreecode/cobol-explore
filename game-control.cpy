@@ -13,7 +13,10 @@
        ground-cell-generate.
            move function random to random-value
            evaluate true
-               when random-value < 0.05 set ground-gen-solid to true
+               when random-value < 0.05
+                       and ground-row-index >
+                           ground-render-row-start * 2
+                   set ground-gen-solid to true
                when other set ground-gen-empty to true
            end-evaluate
       *    display 'gen ' ground-col-index ' ' ground-row-index
@@ -32,6 +35,8 @@
 
        move-things.
            add 5 to ground-render-offset-y
+           perform check-collision-feet
+           if collision then move 0 to ground-render-offset-y end-if
       *    Need more math if we can move more than a tile per frame.
            if ground-render-offset-y >= tile-size then
                perform copy-row varying ground-render-row-index

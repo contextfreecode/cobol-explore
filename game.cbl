@@ -24,6 +24,7 @@
            call 'SDL_DestroyWindow' using by value win
            call 'SDL_Quit'
            .
+       copy game-collision.
        copy game-control.
        copy game-event.
        copy game-render.
