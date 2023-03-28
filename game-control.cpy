@@ -34,11 +34,22 @@
            .
 
        move-things.
-           add 5 to ground-render-offset-y
+           add speed to ground-render-offset-y
            perform check-collision-feet
-           if collision then move 0 to ground-render-offset-y end-if
+           if not collision then
+               add 1 to collision-free-time
+      *        display collision-free-time ' ' speed
+               if collision-free-time > 10 and speed < 10 then
+                   add 1 to speed
+                   move zero to collision-free-time
+               end-if
+           end-if
+           if collision then
+               move tile-size to ground-render-offset-y
+               move zero to collision-free-time speed
       *    Need more math if we can move more than a tile per frame.
-           if ground-render-offset-y >= tile-size then
+           else if ground-render-offset-y >= tile-size or collision then
+      *        Move ground up
                perform copy-row varying ground-render-row-index
                    from 1 by 1
       *            Don't copy *into* the last row.
@@ -58,7 +69,17 @@
 
        process-player-control.
       *    if control-down add 10 to player-dst-rect-y end-if
-           if control-left subtract 5 from player-dst-rect-x end-if
-           if control-right add 5 to player-dst-rect-x end-if
+           if control-left then
+               subtract 5 from player-dst-rect-x
+               if player-dst-rect-x < 0 then
+                   move zero to player-dst-rect-x
+               end-if
+           end-if
+           if control-right then
+               add 5 to player-dst-rect-x
+               if player-dst-rect-x + player-dst-rect-w > win-w then
+                   compute player-dst-rect-x = win-w - player-dst-rect-w
+               end-if
+           end-if
       *    if control-up subtract 10 from player-dst-rect-y end-if
            .

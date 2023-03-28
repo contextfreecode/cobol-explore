@@ -6,17 +6,18 @@
            compute collision-offset-y =
                player-dst-rect-y + player-dst-rect-h
            compute ground-render-row-index =
-               -1 + ground-render-row-start
+               ground-render-row-start
                + (collision-offset-y + ground-render-offset-y)
                    / tile-size
            compute ground-render-col-index =
                1 + collision-offset-x / tile-size
-           display 'check ' collision-offset-x ' ' collision-offset-y
-               ' -> ' ground-render-col-index
-               ' ' ground-render-row-index
            move ground-cell(
                ground-render-row-index, ground-render-col-index
            ) to ground-gen
+      *    display 'check ' collision-offset-x ' ' collision-offset-y
+      *        ' -> ' ground-render-col-index
+      *        ' ' ground-render-row-index ' at ' ground-render-offset-y
+      *        ' ' ground-gen
            if ground-gen-solid then set collision to true end-if
            .
 

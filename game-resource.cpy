@@ -37,7 +37,8 @@
            .
 
        init-rect.
-           compute ground-src-rect-x = 3 * tile-size
+           compute ground-src-rect-x = 4 * tile-size
+           compute ground-src-rect-y = 4 * tile-size
            move tile-size to
                ground-src-rect-w ground-src-rect-h
                ground-dst-rect-w ground-dst-rect-h
