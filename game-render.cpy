@@ -7,8 +7,10 @@
        render-ground.
            perform varying ground-render-row-index
                from ground-render-row-start by 1
-               until ground-render-row-index =
-                   ground-render-row-start + ground-row-show-count + 1
+               until ground-render-row-index >
+                       ground-render-row-start
+                       + ground-row-show-count + 2
+                   or ground-render-row-index > ground-row-count
                perform render-ground-row
            end-perform
            .
@@ -20,9 +22,10 @@
            if ground-gen-solid then
                compute ground-dst-rect-x =
                    ground-render-col-index * tile-size
-               compute ground-dst-rect-y =
-                   (ground-render-row-index - ground-render-row-start)
-                   * tile-size
+               compute ground-dst-rect-y = (
+                       ground-render-row-index - ground-render-row-start
+                   ) * tile-size
+                   - ground-render-offset-y
                call 'SDL_RenderCopy' using
                    by value renderer ground-texture
                    by content ground-src-rect ground-dst-rect

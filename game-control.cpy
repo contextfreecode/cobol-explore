@@ -17,14 +17,25 @@
            end-perform
            .
 
+       move-things.
+           add 2 to ground-render-offset-y
+      *    -- This could be math instead of a loop. --
+           perform until ground-render-offset-y < tile-size
+      *        -- Instead, shift whole grid and generate new row. --
+               add 1 to ground-render-row-start
+               subtract tile-size from ground-render-offset-y
+           end-perform
+           .
+
        process-control.
+           perform move-things
            perform ground-fill
            perform process-player-control
            .
 
        process-player-control.
-           if control-down add 10 to player-dst-rect-y end-if
+      *    if control-down add 10 to player-dst-rect-y end-if
            if control-left subtract 5 from player-dst-rect-x end-if
            if control-right add 5 to player-dst-rect-x end-if
-           if control-up subtract 10 from player-dst-rect-y end-if
+      *    if control-up subtract 10 from player-dst-rect-y end-if
            .

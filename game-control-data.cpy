@@ -29,4 +29,6 @@
                    10 ground-cell pic x.
                        88 ground-solid value 'S'.
 
+           01 ground-render-offset-y binary-long value 0.
+
            01 random-value float-long.
