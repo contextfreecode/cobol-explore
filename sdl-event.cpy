@@ -13,6 +13,8 @@
            05 sdl-event-key-padding2 binary-char.
            05 sdl-event-key-sym.
                10 sdl-event-key-scancode binary-long.
+                   88 sdl-scancode-a value 4.
+                   88 sdl-scancode-d value 7.
                    88 sdl-scancode-right value 79.
                    88 sdl-scancode-left value 80.
                    88 sdl-scancode-down value 81.

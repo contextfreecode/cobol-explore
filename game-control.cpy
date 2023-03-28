@@ -71,14 +71,16 @@
       *    if control-down add 10 to player-dst-rect-y end-if
            if control-left then
                subtract 5 from player-dst-rect-x
-               if player-dst-rect-x < 0 then
-                   move zero to player-dst-rect-x
+               if player-dst-rect-x < -collision-inset then
+                   compute player-dst-rect-x = -collision-inset
                end-if
            end-if
            if control-right then
                add 5 to player-dst-rect-x
-               if player-dst-rect-x + player-dst-rect-w > win-w then
-                   compute player-dst-rect-x = win-w - player-dst-rect-w
+               if player-dst-rect-x + player-dst-rect-w
+                       > win-w + collision-inset then
+                   compute player-dst-rect-x = win-w + collision-inset
+                       - player-dst-rect-w
                end-if
            end-if
       *    if control-up subtract 10 from player-dst-rect-y end-if

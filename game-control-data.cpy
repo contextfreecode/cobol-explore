@@ -39,5 +39,6 @@
            01 collision-flag pic x value ' '.
                88 collision value 'Y'.
            01 collision-free-time binary-long value 0.
+           78 collision-inset value 20.
 
            01 speed binary-long value 1.

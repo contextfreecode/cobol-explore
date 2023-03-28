@@ -22,7 +22,9 @@
            evaluate true
                when sdl-scancode-down set control-down to true
                when sdl-scancode-left set control-left to true
+               when sdl-scancode-a set control-left to true
                when sdl-scancode-right set control-right to true
+               when sdl-scancode-d set control-right to true
                when sdl-scancode-up set control-up to true
            end-evaluate
            .
@@ -31,7 +33,9 @@
            evaluate true
                when sdl-scancode-down move space to control-down-flag
                when sdl-scancode-left move space to control-left-flag
+               when sdl-scancode-a move space to control-left-flag
                when sdl-scancode-right move space to control-right-flag
+               when sdl-scancode-d move space to control-right-flag
                when sdl-scancode-up move space to control-up-flag
            end-evaluate
            .
