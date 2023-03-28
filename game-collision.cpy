@@ -1,15 +1,19 @@
        check-collision-foot.
            compute collision-offset-x =
                player-dst-rect-x
-               + collision-offset-x * (player-dst-rect-w / 2 - 10)
+               + collision-offset-x * (player-dst-rect-w / 2 - 20)
                + player-dst-rect-w / 2
            compute collision-offset-y =
                player-dst-rect-y + player-dst-rect-h
            compute ground-render-row-index =
-               ground-render-row-start
+               -1 + ground-render-row-start
                + (collision-offset-y + ground-render-offset-y)
                    / tile-size
-           compute ground-render-col-index = ground-render-col-index
+           compute ground-render-col-index =
+               1 + collision-offset-x / tile-size
+           display 'check ' collision-offset-x ' ' collision-offset-y
+               ' -> ' ground-render-col-index
+               ' ' ground-render-row-index
            move ground-cell(
                ground-render-row-index, ground-render-col-index
            ) to ground-gen
