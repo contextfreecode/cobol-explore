@@ -4,6 +4,14 @@
            perform render-player
            .
 
+       print-ground.
+           perform varying ground-render-row-index from 1 by 1
+               until ground-render-row-index > ground-row-count
+               display ground-rows(ground-render-row-index) '|'
+           end-perform
+           display '---'
+           .
+
        render-ground.
            perform varying ground-render-row-index
                from ground-render-row-start by 1
@@ -17,7 +25,7 @@
 
        render-ground-cell.
            move ground-cell(
-               ground-render-col-index, ground-render-row-index
+               ground-render-row-index, ground-render-col-index
            ) to ground-gen
            if ground-gen-solid then
                compute ground-dst-rect-x =
@@ -35,7 +43,7 @@
        render-ground-row.
            perform render-ground-cell varying ground-render-col-index
                from 1 by 1
-               until ground-render-col-index = ground-col-count + 1
+               until ground-render-col-index > ground-col-count
            .
 
        render-player.
