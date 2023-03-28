@@ -31,3 +31,31 @@
                end-if
            end-if
            .
+
+       move-things.
+           add speed to ground-render-offset-y
+           perform check-collision-feet
+           if not collision then
+               add 1 to collision-free-time
+      *        display collision-free-time ' ' speed
+               if collision-free-time > 10 and speed < 10 then
+                   add 1 to speed
+                   move zero to collision-free-time
+               end-if
+           end-if
+           if collision then
+               move tile-size to ground-render-offset-y
+               move zero to collision-free-time speed
+      *    Need more math if we can move more than a tile per frame.
+           else if ground-render-offset-y >= tile-size or collision then
+      *        Move ground up
+               perform copy-row varying ground-render-row-index
+                   from 1 by 1
+      *            Don't copy *into* the last row.
+                   until ground-render-row-index = ground-row-count
+               subtract tile-size from ground-render-offset-y
+               subtract 1 from ground-row-index
+               perform ground-fill
+      *        perform print-ground
+           end-if
+           .
