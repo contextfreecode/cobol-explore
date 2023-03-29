@@ -29,3 +29,8 @@
                88 step-frame-fall value -2.
                88 step-frame-land value -1.
                88 step-frame-walk value 0 thru step-frame-count - 1.
+           01 direction-flag binary-long value 0.
+               88 direction-left value 1.
+               88 direction-right value 0.
+
+           01 angle float-long value 0.0.

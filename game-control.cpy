@@ -47,6 +47,7 @@
                if player-dst-rect-x < -collision-inset then
                    compute player-dst-rect-x = -collision-inset
                end-if
+               set direction-left to true
            end-if
            if control-right then
                add 5 to player-dst-rect-x
@@ -55,6 +56,7 @@
                    compute player-dst-rect-x = game-w + collision-inset
                        - player-dst-rect-w
                end-if
+               set direction-right to true
            end-if
            if collision and (control-left or control-right) then
                evaluate true

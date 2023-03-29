@@ -71,9 +71,10 @@
        render-player.
            add tile-size to player-dst-rect-x
            perform choose-player-tile
-           call 'SDL_RenderCopy' using
+           call 'SDL_RenderCopyEx' using
                by value renderer player-texture
                by content player-src-rect player-dst-rect
+               by value angle 0 direction-flag
            end-call
            subtract tile-size from player-dst-rect-x
            .
