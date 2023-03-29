@@ -34,6 +34,9 @@
            call 'load-texture' using
                z'assets/player.png' renderer player-texture
            end-call
+           call 'load-texture' using
+               z'assets/wall.png' renderer wall-texture
+           end-call
            .
 
        init-rect.

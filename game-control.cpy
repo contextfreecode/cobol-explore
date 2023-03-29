@@ -50,8 +50,8 @@
            if control-right then
                add 5 to player-dst-rect-x
                if player-dst-rect-x + player-dst-rect-w
-                       > win-w + collision-inset then
-                   compute player-dst-rect-x = win-w + collision-inset
+                       > game-w + collision-inset then
+                   compute player-dst-rect-x = game-w + collision-inset
                        - player-dst-rect-w
                end-if
            end-if

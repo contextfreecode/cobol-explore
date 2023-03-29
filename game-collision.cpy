@@ -25,9 +25,12 @@
                perform check-collision-foot
                if not collision
                        and player-dst-rect-x + player-dst-rect-w
-                           < win-w then
+                           < game-w then
                    move 1 to collision-offset-x
                    perform check-collision-foot
+               end-if
+               if collision and step-frame-fall then
+                   set step-frame-land to true
                end-if
            end-if
            .
