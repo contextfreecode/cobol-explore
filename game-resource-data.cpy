@@ -20,8 +20,12 @@
                05 solid-right-flag pic x value ' '.
                    88 solid-right value 'Y'.
 
-           78 step-frame-count value 8.
+           78 step-frame-actual-count value 8.
+           78 step-frame-factor value 4.
+           78 step-frame-count value
+               step-frame-actual-count * step-frame-factor.
+           01 step-frame-actual binary-long.
            01 step-frame binary-long value -2.
                88 step-frame-fall value -2.
                88 step-frame-land value -1.
-               88 step-frame-walk value 0 thru 7.
+               88 step-frame-walk value 0 thru step-frame-count - 1.

@@ -41,6 +41,7 @@
 
        process-player-control.
       *    if control-down add 10 to player-dst-rect-y end-if
+      *    if control-up subtract 10 from player-dst-rect-y end-if
            if control-left then
                subtract 5 from player-dst-rect-x
                if player-dst-rect-x < -collision-inset then
@@ -55,5 +56,14 @@
                        - player-dst-rect-w
                end-if
            end-if
-      *    if control-up subtract 10 from player-dst-rect-y end-if
+           if collision and (control-left or control-right) then
+               evaluate true
+                   when step-frame-walk
+                       compute step-frame = function rem(
+                           step-frame + 1, step-frame-count
+                       )
+                   when other
+                       move zero to step-frame
+               end-evaluate
+           end-if
            .

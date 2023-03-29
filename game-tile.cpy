@@ -46,11 +46,17 @@
 
        choose-player-tile.
            evaluate true
-               when collision
-                  compute player-src-rect-x = player-src-rect-w * 3
-                  compute player-src-rect-y = player-src-rect-h * 0
-               when other
-                  compute player-src-rect-x = player-src-rect-w * 8
-                  compute player-src-rect-y = player-src-rect-h * 0
+               when step-frame-fall
+                   compute player-src-rect-x = player-src-rect-w * 8
+                   compute player-src-rect-y = player-src-rect-h * 0
+               when step-frame-land
+                   compute player-src-rect-x = player-src-rect-w * 3
+                   compute player-src-rect-y = player-src-rect-h * 0
+               when step-frame-walk
+                   compute step-frame-actual =
+                       step-frame / step-frame-factor
+                   compute player-src-rect-x =
+                       player-src-rect-w * step-frame-actual
+                   compute player-src-rect-y = player-src-rect-h * 4
            end-evaluate
            .
