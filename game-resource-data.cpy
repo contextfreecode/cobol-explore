@@ -14,6 +14,7 @@
            copy sdl-rect replacing leading ==sdl== by ==ground-dst==.
            copy sdl-rect replacing leading ==sdl== by ==player-src==.
            copy sdl-rect replacing leading ==sdl== by ==player-dst==.
+           copy sdl-rect replacing leading ==sdl== by ==stat==.
 
            01 solid-sides.
                05 solid-left-flag pic x value ' '.

@@ -16,8 +16,6 @@
        render-backdrop-row.
            compute ground-src-rect-x = tile-size * 0
            compute ground-src-rect-y = tile-size * 5
-           call 'SDL_SetRenderDrawBlendMode' using
-               by value renderer 1
            call 'SDL_SetRenderDrawColor' using
                by value renderer 0 0 0 210
            perform varying ground-render-col-index

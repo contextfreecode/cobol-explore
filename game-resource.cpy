@@ -26,9 +26,15 @@
                by value sdl-renderer-accelerated
                returning renderer
            end-call
+           call 'SDL_SetRenderDrawBlendMode' using
+               by value renderer 1
+           end-call
            .
 
        init-texture.
+           call 'load-texture' using
+               z'assets/font.png' renderer font-texture
+           end-call
            call 'load-texture' using
                z'assets/ground.png' renderer ground-texture
            end-call
