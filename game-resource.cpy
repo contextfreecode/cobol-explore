@@ -54,5 +54,5 @@
            .
 
        init-stats.
-           move zeros to distance time-count score
+           move zeros to distance decimal-time score
            .

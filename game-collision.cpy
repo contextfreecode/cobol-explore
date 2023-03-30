@@ -43,7 +43,7 @@
            move distance to distance-old
            perform check-collision-feet
            if not step-frame-land then
-               add 0.01 to time-count
+               add 0.01 to decimal-time
            end-if
            if not collision then
                add 1 to collision-free-time

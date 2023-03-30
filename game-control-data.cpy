@@ -47,4 +47,4 @@
                05 distance binary-long.
                05 distance-old binary-long.
                05 score pic 9(9)v9(2) packed-decimal.
-               05 time-count pic 9(9)v9(2) packed-decimal.
+               05 decimal-time pic 9(9)v9(2) packed-decimal.
