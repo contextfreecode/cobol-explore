@@ -44,3 +44,5 @@
                05 fmt-distance pic z(8)9.
                05 fmt-score pic x(12).
                05 fmt-time pic x(13).
+
+           01 full-line pic x(80) value spaces.
