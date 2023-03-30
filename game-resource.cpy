@@ -3,6 +3,7 @@
            perform init-sdl
            perform init-texture
            perform init-rect
+           perform init-stats
            .
 
        init-random.
@@ -50,4 +51,8 @@
            compute player-src-rect-x = 8 * player-src-rect-w
            compute player-dst-rect-x = (win-w - player-src-rect-w) / 2
            compute player-dst-rect-y = 4 * tile-size - player-src-rect-h
+           .
+
+       init-stats.
+           move zeros to distance time-count score
            .

@@ -1,3 +1,4 @@
+           01 font-texture usage pointer.
            01 ground-texture usage pointer.
            01 player-texture usage pointer.
            01 wall-texture usage pointer.
@@ -34,3 +35,6 @@
                88 direction-right value 0.
 
            01 angle float-long value 0.0.
+
+           78 font-tile-w value 19.
+           78 font-tile-h value 43.

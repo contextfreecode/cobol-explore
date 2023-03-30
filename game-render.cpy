@@ -2,6 +2,7 @@
            call 'SDL_RenderClear' using by value renderer
            perform render-ground
            perform render-player
+           display distance ' ' time-count ' ' score
            .
 
        print-ground.
@@ -10,6 +11,27 @@
                display ground-rows(ground-render-row-index) '|'
            end-perform
            display '---'
+           .
+
+       render-backdrop-row.
+           compute ground-src-rect-x = tile-size * 0
+           compute ground-src-rect-y = tile-size * 5
+           call 'SDL_SetRenderDrawBlendMode' using
+               by value renderer 1
+           call 'SDL_SetRenderDrawColor' using
+               by value renderer 0 0 0 210
+           perform varying ground-render-col-index
+               from 1 by 1
+               until ground-render-col-index > ground-col-count
+               compute ground-dst-rect-x =
+                   ground-render-col-index * tile-size
+               call 'SDL_RenderCopy' using
+                   by value renderer wall-texture
+                   by content ground-src-rect ground-dst-rect
+               call 'SDL_RenderFillRect' using
+                   by value renderer
+                   by content ground-dst-rect
+           end-perform
            .
 
        render-ground.
@@ -42,6 +64,7 @@
                    ground-render-row-index - ground-render-row-start
                ) * tile-size
                - ground-render-offset-y
+           perform render-backdrop-row
            perform render-ground-wall-left
            perform render-ground-wall-right
            perform render-ground-cell varying ground-render-col-index
@@ -62,7 +85,7 @@
            compute ground-src-rect-x = tile-size * 2
            compute ground-src-rect-y = tile-size * 1
            compute ground-dst-rect-x =
-               ground-render-col-index * tile-size
+               (ground-col-count + 1) * tile-size
            call 'SDL_RenderCopy' using
                by value renderer wall-texture
                by content ground-src-rect ground-dst-rect

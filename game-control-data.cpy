@@ -42,3 +42,9 @@
            78 collision-inset value 30.
 
            01 speed binary-long value 1.
+
+           01 stats.
+               05 distance binary-long.
+               05 distance-old binary-long.
+               05 score pic 9(9)v9(2) packed-decimal.
+               05 time-count pic 9(9)v9(2) packed-decimal.

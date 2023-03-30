@@ -40,9 +40,15 @@
 
        move-things.
            add speed to ground-render-offset-y
+           move distance to distance-old
            perform check-collision-feet
+           if not step-frame-land then
+               add 0.01 to time-count
+           end-if
            if not collision then
                add 1 to collision-free-time
+               add speed to distance
+               perform update-score
       *        display collision-free-time ' ' speed
                if collision-free-time > 10 and speed < 10 then
                    add 1 to speed
@@ -50,6 +56,9 @@
                end-if
            end-if
            if collision then
+               compute distance =
+                   distance + speed + tile-size - ground-render-offset-y
+               perform update-score
                move tile-size to ground-render-offset-y
                move zero to collision-free-time speed
       *    Need more math if we can move more than a tile per frame.
@@ -64,4 +73,8 @@
                perform ground-fill
       *        perform print-ground
            end-if
+           .
+
+       update-score.
+           compute score = score + 0.01 * (distance - distance-old) ** 2
            .
