@@ -2,7 +2,7 @@
            call 'SDL_RenderClear' using by value renderer
            perform render-ground
            perform render-player
-           display distance ' ' time-count ' ' score
+           perform render-stats
            .
 
        print-ground.

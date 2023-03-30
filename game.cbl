@@ -29,6 +29,7 @@
        copy game-event.
        copy game-render.
        copy game-resource.
+       copy game-stat.
        copy game-tile.
        end program game.
 

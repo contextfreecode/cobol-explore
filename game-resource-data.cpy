@@ -38,3 +38,8 @@
 
            78 font-tile-w value 19.
            78 font-tile-h value 43.
+
+           01 formatted-stats.
+               05 fmt-distance pic z(8)9.
+               05 fmt-score pic x(12).
+               05 fmt-time pic x(13).
