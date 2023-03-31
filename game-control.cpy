@@ -14,8 +14,7 @@
            move function random to random-value
            evaluate true
                when random-value < 0.05
-                       and ground-row-index >
-                           ground-render-row-start * 2
+                       and ground-row-index > ground-row-show-count * 2
                    set ground-gen-solid to true
                when other set ground-gen-empty to true
            end-evaluate
@@ -34,9 +33,11 @@
            .
 
        process-control.
-           perform move-things
            perform ground-fill
-           perform process-player-control
+           if mode-play then
+               perform move-things
+               perform process-player-control
+           end-if
            .
 
        process-player-control.

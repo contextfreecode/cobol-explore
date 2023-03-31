@@ -48,3 +48,7 @@
                05 distance-old binary-long.
                05 score pic 9(9)v9(2) packed-decimal.
                05 decimal-time pic 9(9)v9(2) packed-decimal.
+
+           01 mode-flag pic x value 'i'.
+               88 mode-init value 'i'.
+               88 mode-play value 'p'.

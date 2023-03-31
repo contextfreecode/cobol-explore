@@ -6,6 +6,11 @@
            perform init-stats
            .
 
+       init-reset.
+           perform init-rect
+           perform init-stats
+           .
+
        init-random.
            move function numval(function current-date(1:16)) to seed
            move function abs(seed) to seed
@@ -39,6 +44,9 @@
                z'assets/ground.png' renderer ground-texture
            end-call
            call 'load-texture' using
+               z'assets/menu.png' renderer menu-texture
+           end-call
+           call 'load-texture' using
                z'assets/player.png' renderer player-texture
            end-call
            call 'load-texture' using
@@ -47,18 +55,30 @@
            .
 
        init-rect.
+           move zero to ground-row-index
            compute ground-src-rect-x = 4 * tile-size
            compute ground-src-rect-y = 4 * tile-size
+           call 'SDL_QueryTexture' using
+               by value menu-texture
+               by reference null null menu-src-rect-w menu-src-rect-h
+           end-call
+           move zero to menu-src-rect-x menu-src-rect-y
+           move menu-src-rect-w to menu-dst-rect-w
+           move menu-src-rect-h to menu-dst-rect-h
+           compute menu-dst-rect-x = (win-w - menu-dst-rect-w) / 2
+           compute menu-dst-rect-y = (win-h - menu-dst-rect-h) / 2
            move tile-size to
                ground-src-rect-w ground-src-rect-h
                ground-dst-rect-w ground-dst-rect-h
            move 96 to player-src-rect-w player-dst-rect-w
            move 128 to player-src-rect-h player-dst-rect-h
            compute player-src-rect-x = 8 * player-src-rect-w
-           compute player-dst-rect-x = (win-w - player-src-rect-w) / 2
+           compute player-dst-rect-x = (game-w - player-src-rect-w) / 2
            compute player-dst-rect-y = 4 * tile-size - player-src-rect-h
            .
 
        init-stats.
            move zeros to distance decimal-time score
+           set mode-init to true
+           set step-frame-fall to true
            .

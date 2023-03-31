@@ -1,5 +1,6 @@
            01 font-texture usage pointer.
            01 ground-texture usage pointer.
+           01 menu-texture usage pointer.
            01 player-texture usage pointer.
            01 wall-texture usage pointer.
 
@@ -12,6 +13,8 @@
            78 game-w value tile-size * ground-col-count.
            copy sdl-rect replacing leading ==sdl== by ==ground-src==.
            copy sdl-rect replacing leading ==sdl== by ==ground-dst==.
+           copy sdl-rect replacing leading ==sdl== by ==menu-src==.
+           copy sdl-rect replacing leading ==sdl== by ==menu-dst==.
            copy sdl-rect replacing leading ==sdl== by ==player-src==.
            copy sdl-rect replacing leading ==sdl== by ==player-dst==.
            copy sdl-rect replacing leading ==sdl== by ==stat==.
@@ -37,8 +40,8 @@
 
            01 angle float-long value 0.0.
 
-           78 font-tile-w value 19.
-           78 font-tile-h value 43.
+           78 font-tile-w value 29.
+           78 font-tile-h value 64.
 
            01 formatted-stats.
                05 fmt-distance pic z(8)9.

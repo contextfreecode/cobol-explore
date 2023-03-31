@@ -8,6 +8,7 @@
            perform poll-event
            perform until event-found = 0
                evaluate true
+      *            TODO Mouse/touch events for mobile!
                    when sdl-event-type-keydown perform process-keydown
                    when sdl-event-type-keyup perform process-keyup
                    when sdl-event-type-quit set done to true
@@ -17,9 +18,11 @@
            .
 
        process-keydown.
-      *    display 'keydown '
-      *        sdl-event-key-scancode ' ' sdl-event-key-keycode
            evaluate true
+               when sdl-scancode-escape
+                   perform init-reset
+               when sdl-scancode-enter or sdl-scancode-return
+                   if mode-init then set mode-play to true end-if
                when sdl-scancode-down set control-down to true
                when sdl-scancode-left set control-left to true
                when sdl-scancode-a set control-left to true
