@@ -37,20 +37,42 @@
            .
 
        init-texture.
-           call 'load-texture' using
-               z'assets/font.png' renderer font-texture
+      *    call 'load-texture' using
+      *        z'assets/font.png' renderer font-texture
+      *    end-call
+           call 'loadTextureData' using
+               by value renderer
+               by reference font-asset-data
+               by value font-asset-data-size
+               returning font-texture
            end-call
-           call 'load-texture' using
-               z'assets/ground.png' renderer ground-texture
+      *    call 'load-texture-data' using
+      *        ground-asset-data ground-asset-data-size renderer
+      *        ground-texture
+      *    end-call
+           call 'loadTextureData' using
+               by value renderer
+               by reference ground-asset-data
+               by value ground-asset-data-size
+               returning ground-texture
            end-call
-           call 'load-texture' using
-               z'assets/menu.png' renderer menu-texture
+           call 'loadTextureData' using
+               by value renderer
+               by reference menu-asset-data
+               by value menu-asset-data-size
+               returning menu-texture
            end-call
-           call 'load-texture' using
-               z'assets/player.png' renderer player-texture
+           call 'loadTextureData' using
+               by value renderer
+               by reference player-asset-data
+               by value player-asset-data-size
+               returning player-texture
            end-call
-           call 'load-texture' using
-               z'assets/wall.png' renderer wall-texture
+           call 'loadTextureData' using
+               by value renderer
+               by reference wall-asset-data
+               by value wall-asset-data-size
+               returning wall-texture
            end-call
            .
 

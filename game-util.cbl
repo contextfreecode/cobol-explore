@@ -24,6 +24,34 @@
        end program load-texture.
 
        identification division.
+       program-id. load-texture-data.
+       data division.
+       working-storage section.
+           01 rw usage pointer.
+       linkage section.
+           01 dat-size binary-long.
+           01 dat pic x(1000000).
+           01 renderer usage pointer.
+           01 texture usage pointer.
+       procedure division using dat-size dat renderer texture.
+           call 'showPointer' using by value rw
+      *    call 'writeBinary' using
+      *        by reference z'h.png' dat
+      *        by value dat-size
+           call 'SDL_RWFromConstMem' using
+               by reference dat
+               by value dat-size
+               returning rw
+           end-call
+           call 'showPointer' using by value rw
+           call 'IMG_LoadTexture_RW' using by value renderer rw 1
+               returning texture
+           end-call
+           call 'showPointer' using by value texture
+           .
+       end program load-texture-data.
+
+       identification division.
        program-id. format-time.
        data division.
        linkage section.

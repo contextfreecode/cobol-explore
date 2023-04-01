@@ -4,6 +4,12 @@
            01 player-texture usage pointer.
            01 wall-texture usage pointer.
 
+           copy game-asset-font.
+           copy game-asset-ground.
+           copy game-asset-menu.
+           copy game-asset-player.
+           copy game-asset-wall.
+
            01 renderer usage pointer.
            01 seed binary-long.
            78 tile-size value 70.

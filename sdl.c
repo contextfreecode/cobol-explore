@@ -9,6 +9,19 @@ void dontCallMe(void) {
     IMG_Load("");
 }
 
+// void writeBinary(const char* name, const void* data, int size) {
+//     FILE* output = fopen(name, "wb");
+//     fwrite(data, size, 1, output);
+//     fclose(output);
+// }
+
 void showPointer(void* pointer) {
     printf("%p\n", pointer);
+}
+
+SDL_Texture* loadTextureData(
+    SDL_Renderer* renderer, const void* data, int size
+) {
+    SDL_RWops* rw = SDL_RWFromConstMem(data, size);
+    return IMG_LoadTexture_RW(renderer, rw, 1);
 }
