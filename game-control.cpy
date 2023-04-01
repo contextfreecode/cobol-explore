@@ -5,7 +5,7 @@
                move ground-cell(
                    ground-render-row-index + 1, ground-render-col-index
                ) to ground-cell(
-                   ground-render-row-index, ground-render-col-index
+                   ground-render-row-index ground-render-col-index
                )
            end-perform
            .
@@ -20,7 +20,7 @@
            end-evaluate
       *    display 'gen ' ground-col-index ' ' ground-row-index
            move ground-gen
-               to ground-cell(ground-row-index, ground-col-index)
+               to ground-cell(ground-row-index ground-col-index)
            .
 
        ground-fill.
@@ -34,10 +34,13 @@
 
        process-control.
            perform ground-fill
-           if mode-play then
-               perform move-things
-               perform process-player-control
-           end-if
+           evaluate true
+               when mode-init
+                   perform process-options
+               when mode-play
+                   perform move-things
+                   perform process-player-control
+           end-evaluate
            .
 
        process-player-control.

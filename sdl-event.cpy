@@ -15,6 +15,8 @@
                10 sdl-event-key-scancode binary-long.
                    88 sdl-scancode-a value 4.
                    88 sdl-scancode-d value 7.
+                   88 sdl-scancode-s value 22.
+                   88 sdl-scancode-w value 26.
                    88 sdl-scancode-return value 40.
                    88 sdl-scancode-escape value 41.
                    88 sdl-scancode-right value 79.

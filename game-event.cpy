@@ -5,6 +5,8 @@
            .
 
        poll-events.
+           move space to event-left-flag
+           move space to event-right-flag
            perform poll-event
            perform until event-found = 0
                evaluate true
@@ -23,22 +25,28 @@
                    perform init-reset
                when sdl-scancode-enter or sdl-scancode-return
                    if mode-init then set mode-play to true end-if
-               when sdl-scancode-down set control-down to true
-               when sdl-scancode-left set control-left to true
-               when sdl-scancode-a set control-left to true
-               when sdl-scancode-right set control-right to true
-               when sdl-scancode-d set control-right to true
-               when sdl-scancode-up set control-up to true
+               when sdl-scancode-down or sdl-scancode-s
+                   set control-down to true
+               when sdl-scancode-left or sdl-scancode-a
+                   set control-left to true
+                   set event-left to true
+               when sdl-scancode-right or sdl-scancode-d
+                   set control-right to true
+                   set event-right to true
+               when sdl-scancode-up or sdl-scancode-w
+                   set control-up to true
            end-evaluate
            .
 
        process-keyup.
            evaluate true
-               when sdl-scancode-down move space to control-down-flag
-               when sdl-scancode-left move space to control-left-flag
-               when sdl-scancode-a move space to control-left-flag
-               when sdl-scancode-right move space to control-right-flag
-               when sdl-scancode-d move space to control-right-flag
-               when sdl-scancode-up move space to control-up-flag
+               when sdl-scancode-down or sdl-scancode-s
+                   move space to control-down-flag
+               when sdl-scancode-left or sdl-scancode-a
+                   move space to control-left-flag
+               when sdl-scancode-right or sdl-scancode-d
+                   move space to control-right-flag
+               when sdl-scancode-up or sdl-scancode-w
+                   move space to control-up-flag
            end-evaluate
            .

@@ -12,6 +12,11 @@
                88 done value 'Y'.
 
            01 event-found binary-long value 0.
+           01 event-fields.
+               05 event-left-flag pic x value space.
+                   88 event-left value 'Y'.
+               05 event-right-flag pic x value space.
+                   88 event-right value 'Y'.
 
            78 ground-col-count value 9.
            78 ground-row-count value 30.

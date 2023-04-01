@@ -21,7 +21,7 @@
            call 'SDL_Init' using by value sdl-init-video
            call 'SDL_CreateWindow' using
               by content z'Fall Fast'
-              by value 100 0 win-w win-h 0
+              by value 100 0; win-w win-h; 0
               returning win
            end-call
            call 'SDL_CreateRenderer' using

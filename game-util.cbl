@@ -137,10 +137,10 @@
                when '0' thru '9'
                    move txt(j:1) to digit
                    compute tile-src-rect-x = digit * tile-w
-               when '.'
-                   compute tile-src-rect-x = 10 * tile-w
-               when ':'
-                   compute tile-src-rect-x = 11 * tile-w
+               when '.' compute tile-src-rect-x = 10 * tile-w
+               when ':' compute tile-src-rect-x = 11 * tile-w
+               when '<' compute tile-src-rect-x = 13 * tile-w
+               when '>' compute tile-src-rect-x = 15 * tile-w
            end-evaluate
            .
        draw.
@@ -150,3 +150,13 @@
            end-call
            .
        end program draw-stat.
+
+       identification division.
+       program-id. wrap-arrows.
+       data division.
+       linkage section.
+           01 txt pic x(80).
+       procedure division using txt.
+           move function concatenate('<' function trim(txt) '>') to txt
+           .
+       end program wrap-arrows.
