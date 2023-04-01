@@ -20,7 +20,7 @@ void showPointer(void* pointer) {
 }
 
 SDL_Texture* loadTextureData(
-    SDL_Renderer* renderer, const void* data, int size
+    SDL_Renderer* renderer, int size, const void* data
 ) {
     SDL_RWops* rw = SDL_RWFromConstMem(data, size);
     return IMG_LoadTexture_RW(renderer, rw, 1);

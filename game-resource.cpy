@@ -41,9 +41,8 @@
       *        z'assets/font.png' renderer font-texture
       *    end-call
            call 'loadTextureData' using
-               by value renderer
+               by value renderer font-asset-data-size
                by reference font-asset-data
-               by value font-asset-data-size
                returning font-texture
            end-call
       *    call 'load-texture-data' using
@@ -51,27 +50,23 @@
       *        ground-texture
       *    end-call
            call 'loadTextureData' using
-               by value renderer
+               by value renderer ground-asset-data-size
                by reference ground-asset-data
-               by value ground-asset-data-size
                returning ground-texture
            end-call
            call 'loadTextureData' using
-               by value renderer
+               by value renderer menu-asset-data-size
                by reference menu-asset-data
-               by value menu-asset-data-size
                returning menu-texture
            end-call
            call 'loadTextureData' using
-               by value renderer
+               by value renderer player-asset-data-size
                by reference player-asset-data
-               by value player-asset-data-size
                returning player-texture
            end-call
            call 'loadTextureData' using
-               by value renderer
+               by value renderer wall-asset-data-size
                by reference wall-asset-data
-               by value wall-asset-data-size
                returning wall-texture
            end-call
            .
@@ -102,5 +97,6 @@
        init-stats.
            move zeros to distance decimal-time score
            set mode-init to true
+           set option-time to true
            set step-frame-fall to true
            .

@@ -1,6 +1,5 @@
        render-menu.
-           move zero to stat-rect-x
-           move font-tile-h to stat-rect-y
+           move zero to stat-rect-x stat-rect-y
            move win-w to stat-rect-w
            move win-h to stat-rect-h
            call 'SDL_SetRenderDrawColor' using
@@ -14,11 +13,14 @@
                by value renderer menu-texture
                by content menu-src-rect menu-dst-rect
            end-call
+           perform render-options
            .
 
        render-stats.
-           perform render-stats-bg
-           if mode-play then perform render-stats-text end-if
+           if mode-play then
+               perform render-stats-bg
+               perform render-stats-text
+           end-if
            .
 
        render-stats-text.

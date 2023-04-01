@@ -5,7 +5,7 @@ import typing as typ
 def gen(path: pth.Path):
     data = path.read_bytes()
     name = path.stem
-    print(name, len(data))
+    # print(name, len(data))
     with open(f"game-asset-{name}.cpy", "w") as output:
         gen_text(data=data, name=name, output=output)
 

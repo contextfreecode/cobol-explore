@@ -5,6 +5,7 @@
        working-storage section.
        copy sdl.
        copy game-control-data.
+       copy game-option-data.
        copy game-resource-data.
 
        procedure division.
@@ -27,6 +28,7 @@
        copy game-collision.
        copy game-control.
        copy game-event.
+       copy game-option.
        copy game-render.
        copy game-resource.
        copy game-stat.
