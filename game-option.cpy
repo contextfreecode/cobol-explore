@@ -8,7 +8,7 @@
                    evaluate true
                        when option-distance
                            compute distance-limit = function max(
-                               distance-limit - 1000, 0
+                               distance-limit - 70000, 0
                            )
                        when option-time
                            compute time-limit = function max(
@@ -18,7 +18,7 @@
                when event-right
                    evaluate true
                        when option-distance
-                           add 1000 to distance-limit
+                           add 70000 to distance-limit
                        when option-time
                            add 60 to time-limit
                    end-evaluate
@@ -28,7 +28,9 @@
        render-option-distance.
            evaluate distance-limit
                when 0 move ' ' to full-line
-               when other move distance-limit to full-line
+               when other
+                   compute fmt-distance = distance-limit / 70
+                   move fmt-distance to full-line
            end-evaluate
            if option-distance call 'wrap-arrows' using full-line end-if
       *    These are hand refined coordinates.
