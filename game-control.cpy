@@ -38,8 +38,13 @@
                when mode-init
                    perform process-options
                when mode-play
-                   perform move-things
-                   perform process-player-control
+                   if (distance < distance-limit or distance-limit = 0)
+                           and (
+                               decimal-time < time-limit
+                               or time-limit = 0) then
+                       perform move-things
+                       perform process-player-control
+                   end-if
            end-evaluate
            .
 
