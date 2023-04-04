@@ -1,5 +1,14 @@
-       render-menu.
-           move zero to stat-rect-x stat-rect-y
+       render-finish.
+           perform render-menu-bg
+           call 'SDL_RenderCopy' using
+               by value renderer finish-texture
+               by content finish-src-rect finish-dst-rect
+           end-call
+           .
+
+       render-menu-bg.
+           move zero to stat-rect-x
+           move font-tile-h to stat-rect-y
            move win-w to stat-rect-w
            move win-h to stat-rect-h
            call 'SDL_SetRenderDrawColor' using
@@ -9,6 +18,10 @@
                by value renderer
                by content stat-rect
            end-call
+           .
+
+       render-menu.
+           perform render-menu-bg
            call 'SDL_RenderCopy' using
                by value renderer menu-texture
                by content menu-src-rect menu-dst-rect
@@ -17,8 +30,8 @@
            .
 
        render-stats.
-           if mode-play then
-               perform render-stats-bg
+           perform render-stats-bg
+           if mode-play or mode-finish then
                perform render-stats-text
            end-if
            .

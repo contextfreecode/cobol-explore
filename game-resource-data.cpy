@@ -1,9 +1,11 @@
+           01 finish-texture usage pointer.
            01 font-texture usage pointer.
            01 ground-texture usage pointer.
            01 menu-texture usage pointer.
            01 player-texture usage pointer.
            01 wall-texture usage pointer.
 
+           copy game-asset-finish.
            copy game-asset-font.
            copy game-asset-ground.
            copy game-asset-menu.
@@ -17,6 +19,8 @@
            78 win-h value 980.
            78 win-w value tile-size * (ground-col-count + 2).
            78 game-w value tile-size * ground-col-count.
+           copy sdl-rect replacing leading ==sdl== by ==finish-src==.
+           copy sdl-rect replacing leading ==sdl== by ==finish-dst==.
            copy sdl-rect replacing leading ==sdl== by ==ground-src==.
            copy sdl-rect replacing leading ==sdl== by ==ground-dst==.
            copy sdl-rect replacing leading ==sdl== by ==menu-src==.

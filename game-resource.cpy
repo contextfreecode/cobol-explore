@@ -37,6 +37,11 @@
            .
 
        init-texture.
+           call 'loadTextureData' using
+               by value renderer finish-asset-data-size
+               by reference finish-asset-data
+               returning finish-texture
+           end-call
       *    call 'load-texture' using
       *        z'assets/font.png' renderer font-texture
       *    end-call
@@ -76,10 +81,21 @@
            compute ground-src-rect-x = 4 * tile-size
            compute ground-src-rect-y = 4 * tile-size
            call 'SDL_QueryTexture' using
+               by value finish-texture
+               by reference
+                   null null finish-src-rect-w finish-src-rect-h
+           end-call
+           call 'SDL_QueryTexture' using
                by value menu-texture
                by reference null null menu-src-rect-w menu-src-rect-h
            end-call
-           move zero to menu-src-rect-x menu-src-rect-y
+           move zero to
+               finish-src-rect-x finish-src-rect-y
+               menu-src-rect-x menu-src-rect-y
+           move finish-src-rect-w to finish-dst-rect-w
+           move finish-src-rect-h to finish-dst-rect-h
+           compute finish-dst-rect-x = (win-w - finish-dst-rect-w) / 2
+           compute finish-dst-rect-y = (win-h - finish-dst-rect-h) / 2
            move menu-src-rect-w to menu-dst-rect-w
            move menu-src-rect-h to menu-dst-rect-h
            compute menu-dst-rect-x = (win-w - menu-dst-rect-w) / 2

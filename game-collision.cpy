@@ -77,4 +77,11 @@
 
        update-score.
            compute score = score + 0.01 * (distance - distance-old) ** 2
+           if (
+               distance-limit > 0 and distance >= distance-limit
+           ) or (
+               time-limit > 0 and decimal-time >= time-limit
+           ) then
+               set mode-finish to true
+           end-if
            .

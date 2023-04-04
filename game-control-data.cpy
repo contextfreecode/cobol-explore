@@ -57,3 +57,4 @@
            01 mode-flag pic x value 'i'.
                88 mode-init value 'i'.
                88 mode-play value 'p'.
+               88 mode-finish value 'f'.

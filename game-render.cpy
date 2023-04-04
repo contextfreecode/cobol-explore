@@ -2,9 +2,10 @@
            call 'SDL_RenderClear' using by value renderer
            perform render-ground
            perform render-player
-           if mode-init then
-               perform render-menu
-           end-if
+           evaluate true
+               when mode-init perform render-menu
+               when mode-finish perform render-finish
+           end-evaluate
            perform render-stats
            .
 
