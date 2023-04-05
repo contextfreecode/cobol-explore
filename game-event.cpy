@@ -5,6 +5,7 @@
            .
 
        poll-events.
+           call 'SDL_GetTicks' returning frame-start
            move space to event-left-flag
            move space to event-right-flag
            perform poll-event

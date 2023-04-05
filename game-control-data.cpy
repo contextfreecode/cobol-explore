@@ -58,3 +58,6 @@
                88 mode-init value 'i'.
                88 mode-play value 'p'.
                88 mode-finish value 'f'.
+
+           01 frame-start binary-long.
+           01 frame-time binary-long.

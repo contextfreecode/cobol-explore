@@ -106,5 +106,8 @@
 
        end-step.
            call 'SDL_RenderPresent' using by value renderer
-           call 'SDL_Delay' using by value 10
+           call 'SDL_GetTicks' returning frame-time
+           subtract frame-start from frame-time
+           compute frame-time = function max(0, 10 - frame-time)
+           call 'SDL_Delay' using by value frame-time
            .
