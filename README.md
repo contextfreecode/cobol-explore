@@ -6,3 +6,8 @@ python game_gen_asset_data.py && \
         -Os -fliteral-length=200000 && \
     ./game
 ```
+
+```
+podman build -f containerfile -t cobol-explore-game-build
+podman run -it --rm -v $PWD:/src cobol-explore-game-build bash
+```
