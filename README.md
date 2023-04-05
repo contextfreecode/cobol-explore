@@ -9,5 +9,5 @@ python game_gen_asset_data.py && \
 
 ```
 podman build -f containerfile -t cobol-explore-game-build
-podman run -it --rm -v $PWD:/src cobol-explore-game-build bash
+podman run -it --rm -v $PWD:/src cobol-explore-game-build bash scripts/build.sh
 ```

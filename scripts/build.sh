@@ -35,7 +35,8 @@ emcc \
   -s USE_SDL_IMAGE=2 \
   -s ERROR_ON_UNDEFINED_SYMBOLS=0 \
   -s ASYNCIFY \
-  -s EXTRA_EXPORTED_RUNTIME_METHODS=['UTF8ToString'] \
+  -s EXPORTED_RUNTIME_METHODS=['UTF8ToString'] \
+  -s EXPORTED_FUNCTIONS=_loadTextureData \
   -s EXPORT_ALL=1 \
   --minify 0 `# Disable JS minify - This allows the sed commands to below operate correctly` \
   -O2 \
