@@ -21,9 +21,9 @@
            goback
            .
        dispose.
-           call 'SDL_DestroyRenderer' using by value renderer
-           call 'SDL_DestroyWindow' using by value win
-           call 'SDL_Quit'
+           call 'sdlDestroyRenderer' using by value renderer
+           call 'sdlDestroyWindow' using by value win
+           call 'sdlQuit'
            .
        copy game-collision.
        copy game-control.
