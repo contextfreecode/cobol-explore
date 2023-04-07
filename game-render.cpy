@@ -1,5 +1,5 @@
        render.
-           call 'SDL_RenderClear' using by value renderer
+           call 'sdlRenderClear' using by value renderer
            perform render-ground
            perform render-player
            evaluate true
@@ -20,17 +20,17 @@
        render-backdrop-row.
            compute ground-src-rect-x = tile-size * 0
            compute ground-src-rect-y = tile-size * 5
-           call 'SDL_SetRenderDrawColor' using
+           call 'sdlSetRenderDrawColor' using
                by value renderer 0 0 0 210
            perform varying ground-render-col-index
                from 1 by 1
                until ground-render-col-index > ground-col-count
                compute ground-dst-rect-x =
                    ground-render-col-index * tile-size
-               call 'SDL_RenderCopy' using
+               call 'sdlRenderCopy' using
                    by value renderer wall-texture
                    by content ground-src-rect ground-dst-rect
-               call 'SDL_RenderFillRect' using
+               call 'sdlRenderFillRect' using
                    by value renderer
                    by content ground-dst-rect
            end-perform
@@ -55,7 +55,7 @@
                compute ground-dst-rect-x =
                    ground-render-col-index * tile-size
                perform choose-ground-tile
-               call 'SDL_RenderCopy' using
+               call 'sdlRenderCopy' using
                    by value renderer ground-texture
                    by content ground-src-rect ground-dst-rect
            end-if
@@ -78,7 +78,7 @@
            compute ground-src-rect-x = tile-size * 2
            compute ground-src-rect-y = tile-size * 0
            move zero to ground-dst-rect-x
-           call 'SDL_RenderCopy' using
+           call 'sdlRenderCopy' using
                by value renderer wall-texture
                by content ground-src-rect ground-dst-rect
            .
@@ -88,7 +88,7 @@
            compute ground-src-rect-y = tile-size * 1
            compute ground-dst-rect-x =
                (ground-col-count + 1) * tile-size
-           call 'SDL_RenderCopy' using
+           call 'sdlRenderCopy' using
                by value renderer wall-texture
                by content ground-src-rect ground-dst-rect
            .
@@ -96,7 +96,7 @@
        render-player.
            add tile-size to player-dst-rect-x
            perform choose-player-tile
-           call 'SDL_RenderCopyEx' using
+           call 'sdlRenderCopyEx' using
                by value renderer player-texture
                by content player-src-rect player-dst-rect
                by value angle 0 direction-flag
@@ -105,9 +105,9 @@
            .
 
        end-step.
-           call 'SDL_RenderPresent' using by value renderer
-           call 'SDL_GetTicks' returning frame-time
+           call 'sdlRenderPresent' using by value renderer
+           call 'sdlGetTicks' returning frame-time
            subtract frame-start from frame-time
            compute frame-time = function max(0, 10 - frame-time)
-           call 'SDL_Delay' using by value frame-time
+           call 'sdlDelay' using by value frame-time
            .

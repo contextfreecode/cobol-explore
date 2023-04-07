@@ -1,11 +1,11 @@
        poll-event.
-           call 'SDL_PollEvent' using by reference sdl-event
+           call 'sdlPollEvent' using by reference sdl-event
                returning event-found
            end-call
            .
 
        poll-events.
-           call 'SDL_GetTicks' returning frame-start
+           call 'sdlGetTicks' returning frame-start
            move space to event-left-flag
            move space to event-right-flag
            perform poll-event

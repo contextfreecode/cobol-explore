@@ -18,20 +18,20 @@
            .
 
        init-sdl.
-           call 'SDL_Init' using by value sdl-init-video
-           call 'SDL_CreateWindow' using
+           call 'sdlInit' using by value sdl-init-video
+           call 'sdlCreateWindow' using
               by content z'Fall Fast'
               by value 100 0; win-w win-h; 0
               returning win
            end-call
-           call 'SDL_CreateRenderer' using
+           call 'sdlCreateRenderer' using
                by value win
       *        -- TODO How to pass a null pointer? --
                by reference null
                by value sdl-renderer-accelerated
                returning renderer
            end-call
-           call 'SDL_SetRenderDrawBlendMode' using
+           call 'sdlSetRenderDrawBlendMode' using
                by value renderer 1
            end-call
            .
@@ -80,12 +80,12 @@
            move zero to ground-row-index
            compute ground-src-rect-x = 4 * tile-size
            compute ground-src-rect-y = 4 * tile-size
-           call 'SDL_QueryTexture' using
+           call 'sdlQueryTexture' using
                by value finish-texture
                by reference
                    null null finish-src-rect-w finish-src-rect-h
            end-call
-           call 'SDL_QueryTexture' using
+           call 'sdlQueryTexture' using
                by value menu-texture
                by reference null null menu-src-rect-w menu-src-rect-h
            end-call

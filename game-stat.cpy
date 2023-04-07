@@ -1,6 +1,6 @@
        render-finish.
            perform render-menu-bg
-           call 'SDL_RenderCopy' using
+           call 'sdlRenderCopy' using
                by value renderer finish-texture
                by content finish-src-rect finish-dst-rect
            end-call
@@ -11,10 +11,10 @@
            move font-tile-h to stat-rect-y
            move win-w to stat-rect-w
            move win-h to stat-rect-h
-           call 'SDL_SetRenderDrawColor' using
+           call 'sdlSetRenderDrawColor' using
                by value renderer 0 0 0 180
            end-call
-           call 'SDL_RenderFillRect' using
+           call 'sdlRenderFillRect' using
                by value renderer
                by content stat-rect
            end-call
@@ -22,7 +22,7 @@
 
        render-menu.
            perform render-menu-bg
-           call 'SDL_RenderCopy' using
+           call 'sdlRenderCopy' using
                by value renderer menu-texture
                by content menu-src-rect menu-dst-rect
            end-call
@@ -59,10 +59,10 @@
            move zero to stat-rect-x stat-rect-y
            move win-w to stat-rect-w
            move font-tile-h to stat-rect-h
-           call 'SDL_SetRenderDrawColor' using
+           call 'sdlSetRenderDrawColor' using
                by value renderer 0 0 0 180
            end-call
-           call 'SDL_RenderFillRect' using
+           call 'sdlRenderFillRect' using
                by value renderer
                by content stat-rect
            end-call

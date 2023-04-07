@@ -11,15 +11,15 @@
            01 texture usage pointer.
        procedure division using path renderer texture.
       *    -- Can't just SDL_LoadBMP because it's a C macro ---
-           call 'SDL_RWFromFile' using path z'rb' returning rw
+           call 'sdlRWFromFile' using path z'rb' returning rw
            call 'IMG_Load_RW' using by value rw 1
                returning surface
            end-call
-           call 'SDL_CreateTextureFromSurface' using
+           call 'sdlCreateTextureFromSurface' using
                by value renderer surface
                returning texture
            end-call
-           call 'SDL_FreeSurface' using by value surface
+           call 'sdlFreeSurface' using by value surface
            .
        end program load-texture.
 
@@ -38,7 +38,7 @@
       *    call 'writeBinary' using
       *        by reference z'h.png' dat
       *        by value dat-size
-           call 'SDL_RWFromConstMem' using
+           call 'sdlRWFromConstMem' using
                by reference dat
                by value dat-size
                returning rw
@@ -144,7 +144,7 @@
            end-evaluate
            .
        draw.
-           call 'SDL_RenderCopy' using
+           call 'sdlRenderCopy' using
                by value renderer texture
                by content tile-src-rect tile-dst-rect
            end-call
